@@ -11,9 +11,6 @@ public class Game {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
 
-    public Game() {
-    }
-
     public Integer getId() {
         return this.id;
     }
