@@ -21,7 +21,7 @@ public class IntegrationTest {
     private TestRestTemplate restTemplate;
 
     @Test
-    public void testName() throws Exception {
+    public void createGame_returnsGameDetails() throws Exception {
         // arrange
 
         // act
