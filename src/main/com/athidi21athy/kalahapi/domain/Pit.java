@@ -24,18 +24,18 @@ public class Pit {
     }
 
     public Integer getId() {
-        return id;
+        return this.id;
     }
 
     public Integer getGameId() {
-        return gameId;
+        return this.gameId;
     }
 
     public Integer getStoneCount() {
-        return stones;
+        return this.stones;
     }
 
     public void setStoneCount(Integer count) {
-        stones = count;
+        this.stones = count;
     }
 }
