@@ -34,4 +34,8 @@ public class Pit {
     public Integer getStoneCount() {
         return stones;
     }
+
+    public void setStoneCount(Integer count) {
+        stones = count;
+    }
 }
