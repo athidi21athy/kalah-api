@@ -1,4 +1,4 @@
-package com.athidi21athy.kalahapi;
+package com.athidi21athy.kalahapi.controller;
 
 import com.athidi21athy.kalahapi.controller.GameController;
 import com.athidi21athy.kalahapi.domain.Game;
