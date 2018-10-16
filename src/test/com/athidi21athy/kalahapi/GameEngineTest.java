@@ -52,6 +52,20 @@ public class GameEngineTest {
         Assertions.assertThat(actual).extracting("stoneCount").containsExactly(expected.stream().map(Pit::getStoneCount).toArray());
     }
 
+    @Test
+    public void tryMove_skips_the_other_opponents_kalah_pit() {
+        int gameId = 14;
+        List<Pit> pits = getFourthMovePits(gameId);
+        List<Pit> expected = getFifthMovePits(gameId);
+
+        List<Pit> actual = new GameEngine().tryMove(pits, 13);
+
+        // assert
+        Assertions.assertThat(actual).extracting("id").containsExactly(expected.stream().map(Pit::getId).toArray());
+        Assertions.assertThat(actual).extracting("gameId").allMatch(g -> g.equals(gameId));
+        Assertions.assertThat(actual).extracting("stoneCount").containsExactly(expected.stream().map(Pit::getStoneCount).toArray());
+    }
+
     // if pitId is 1
     private List<Pit> getInitialMovePits(Integer gameId) {
         List<Pit> pits = new ArrayList<>();
@@ -129,6 +143,26 @@ public class GameEngineTest {
         pits.add(new Pit(12, gameId, 8));
         pits.add(new Pit(13, gameId, 8));
         pits.add(new Pit(14, gameId, 1));
+        return pits;
+    }
+
+    // if pitId is 13
+    private List<Pit> getFifthMovePits(Integer gameId) {
+        List<Pit> pits = new ArrayList<>();
+        pits.add(new Pit(1, gameId, 3));
+        pits.add(new Pit(2, gameId, 9));
+        pits.add(new Pit(3, gameId, 9));
+        pits.add(new Pit(4, gameId, 2));
+        pits.add(new Pit(5, gameId, 9));
+        pits.add(new Pit(6, gameId, 1));
+        pits.add(new Pit(7, gameId, 3));
+        pits.add(new Pit(8, gameId, 9));
+        pits.add(new Pit(9, gameId, 8));
+        pits.add(new Pit(10, gameId, 8));
+        pits.add(new Pit(11, gameId, 1));
+        pits.add(new Pit(12, gameId, 8));
+        pits.add(new Pit(13, gameId, 0));
+        pits.add(new Pit(14, gameId, 2));
         return pits;
     }
 
