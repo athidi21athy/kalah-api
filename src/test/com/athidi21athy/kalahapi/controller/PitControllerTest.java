@@ -1,5 +1,6 @@
 package com.athidi21athy.kalahapi.controller;
 
+import com.athidi21athy.kalahapi.exceptions.InvalidMoveException;
 import com.athidi21athy.kalahapi.service.PitService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,7 +29,7 @@ public class PitControllerTest {
     private PitService pitService;
 
     @Test
-    public void putPit_on_new_game_shouldReturn_expected_GameState() throws Exception {
+    public void putPit_on_new_game_shouldReturn_expected_GameState() throws Exception, InvalidMoveException {
         Map<String, String> state = new HashMap<>();
         state.put("1", "0");
         state.put("2", "7");

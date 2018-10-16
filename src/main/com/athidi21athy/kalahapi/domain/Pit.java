@@ -13,14 +13,20 @@ public class Pit {
     @Id
     private int gameId;
     private int stones;
+    private boolean isAvailable;
 
     protected Pit() {
     }
 
     public Pit(int id, int gameId, int stoneCount) {
+        this(id, gameId, stoneCount, true);
+    }
+
+    public Pit(int id, int gameId, int stoneCount, boolean isAvailable) {
         this.id = id;
         this.gameId = gameId;
         this.stones = stoneCount;
+        this.isAvailable = isAvailable;
     }
 
     public int getId() {
@@ -37,5 +43,13 @@ public class Pit {
 
     public void setStoneCount(int count) {
         this.stones = count;
+    }
+
+    public boolean getIsAvailable() {
+        return this.isAvailable;
+    }
+
+    public void setIsAvailable(boolean isAvailable) {
+        this.isAvailable = isAvailable;
     }
 }

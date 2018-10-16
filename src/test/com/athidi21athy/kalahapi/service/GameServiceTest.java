@@ -66,4 +66,21 @@ public class GameServiceTest {
                 }
         );
     }
+
+    @Test
+    public void createGame_instantiates_newPits_with_available_moves() {
+        Game game = new Game();
+        game.setId(1);
+        given(gameRepository.save(any(Game.class))).willReturn(game);
+
+        gameService.createGame();
+
+        // verify
+        IntStream.rangeClosed(1, 14).forEach(
+                idx -> {
+                    boolean isAvailable = idx % 7 != 0;
+                    verify(pitRepository).save(argThat(p -> p.getId() == idx && p.getIsAvailable() == isAvailable));
+                }
+        );
+    }
 }

@@ -2,6 +2,7 @@ package com.athidi21athy.kalahapi.service;
 
 import com.athidi21athy.kalahapi.GameEngine;
 import com.athidi21athy.kalahapi.domain.Pit;
+import com.athidi21athy.kalahapi.exceptions.InvalidMoveException;
 import com.athidi21athy.kalahapi.repository.PitRepository;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +22,7 @@ public class PitService {
     }
 
     //This function will move the stones in the correct position for you after each
-    public Map<String, String> move(Integer gameId, Integer pitId) {
+    public Map<String, String> move(Integer gameId, Integer pitId) throws InvalidMoveException {
         //On a move should return expected State
         List<Pit> currentPitList = this.pitRepository.findByGameId(gameId);
         List<Pit> newPitList = this.gameEngine.tryMove(currentPitList, pitId);

@@ -1,6 +1,7 @@
 package com.athidi21athy.kalahapi.controller;
 
 import com.athidi21athy.kalahapi.domain.GameState;
+import com.athidi21athy.kalahapi.exceptions.InvalidMoveException;
 import com.athidi21athy.kalahapi.service.PitService;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -19,7 +20,12 @@ public class PitController {
 
     @PutMapping("/games/{gameId}/pits/{pitId}")
     private GameState updatePit(@PathVariable("gameId") Integer gameId, @PathVariable("pitId") Integer pitId) {
-        Map<String, String> state = pitService.move(gameId, pitId);
+        Map<String, String> state = null;
+        try {
+            state = pitService.move(gameId, pitId);
+        } catch (InvalidMoveException e) {
+            e.printStackTrace();
+        }
         return new GameState(gameId, state);
     }
 

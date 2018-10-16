@@ -1,6 +1,7 @@
 package com.athidi21athy.kalahapi;
 
 import com.athidi21athy.kalahapi.domain.Pit;
+import com.athidi21athy.kalahapi.exceptions.InvalidMoveException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +10,12 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class GameEngine {
-    public List<Pit> tryMove(List<Pit> currentPitList, Integer pitId) {
+    public List<Pit> tryMove(List<Pit> currentPitList, Integer pitId) throws InvalidMoveException {
+
+        if (!currentPitList.get(pitId - 1).getIsAvailable()) {
+            throw new InvalidMoveException();
+        }
+
         List<Pit> newPits = new ArrayList<>(currentPitList.size());
         for (Pit item : currentPitList)
             newPits.add(new Pit(item.getId(), item.getGameId(), item.getStoneCount()));

@@ -1,19 +1,18 @@
 package com.athidi21athy.kalahapi;
 
 import com.athidi21athy.kalahapi.domain.Pit;
+import com.athidi21athy.kalahapi.exceptions.InvalidMoveException;
 import org.assertj.core.api.Assertions;
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-
-import static org.junit.Assert.*;
 
 public class GameEngineTest {
 
     @Test
-    public void tryMove_from_initial_pits_returns_expected_pits() {
+    public void tryMove_from_initial_pits_returns_expected_pits() throws InvalidMoveException {
         int gameId = 123;
         List<Pit> pits = getInitialGamePits(gameId);
         List<Pit> expected = getInitialMovePits(gameId);
@@ -25,7 +24,7 @@ public class GameEngineTest {
     }
 
     @Test
-    public void tryMove_from_initial_turn_returns_expected_pits() {
+    public void tryMove_from_initial_turn_returns_expected_pits() throws InvalidMoveException {
         int gameId = 12;
         List<Pit> pits = getInitialMovePits(gameId);
         List<Pit> expected = getSecondMovePits(gameId);
@@ -39,7 +38,7 @@ public class GameEngineTest {
     }
 
     @Test
-    public void tryMove_skips_opponents_kalah_pit() {
+    public void tryMove_skips_opponents_kalah_pit() throws InvalidMoveException {
         int gameId = 14;
         List<Pit> pits = getThirdMovePits(gameId);
         List<Pit> expected = getFourthMovePits(gameId);
@@ -53,7 +52,7 @@ public class GameEngineTest {
     }
 
     @Test
-    public void tryMove_skips_the_other_opponents_kalah_pit() {
+    public void tryMove_skips_the_other_opponents_kalah_pit() throws InvalidMoveException {
         int gameId = 14;
         List<Pit> pits = getFourthMovePits(gameId);
         List<Pit> expected = getFifthMovePits(gameId);
@@ -64,6 +63,24 @@ public class GameEngineTest {
         Assertions.assertThat(actual).extracting("id").containsExactly(expected.stream().map(Pit::getId).toArray());
         Assertions.assertThat(actual).extracting("gameId").allMatch(g -> g.equals(gameId));
         Assertions.assertThat(actual).extracting("stoneCount").containsExactly(expected.stream().map(Pit::getStoneCount).toArray());
+    }
+
+    @Test(expected = InvalidMoveException.class)
+    public void tryMove_throws_InvalidMoveException_on_making_unavailable_moves() throws InvalidMoveException {
+        int gameId = 14;
+        int count = 0;
+        List<Pit> pits = getInitialGamePits(gameId);
+        for(int pitId : Arrays.asList(1, 5, 6, 7, 14)) {
+            try {
+                pits.get(pitId - 1).setIsAvailable(false);
+                new GameEngine().tryMove(pits, pitId);
+            } catch (InvalidMoveException ex) {
+                count++;
+                if (count == 5) {
+                    throw ex;
+                }
+            }
+        }
     }
 
     // if pitId is 1

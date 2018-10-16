@@ -2,6 +2,7 @@ package com.athidi21athy.kalahapi.service;
 
 import com.athidi21athy.kalahapi.GameEngine;
 import com.athidi21athy.kalahapi.domain.Pit;
+import com.athidi21athy.kalahapi.exceptions.InvalidMoveException;
 import com.athidi21athy.kalahapi.repository.PitRepository;
 import org.junit.Before;
 import org.junit.Test;
@@ -36,7 +37,7 @@ public class PitServiceTest {
     }
 
     @Test
-    public void move_for_initial_game_returns_expected_state_from_gameEngine() {
+    public void move_for_initial_game_returns_expected_state_from_gameEngine() throws InvalidMoveException {
         int gameId = new Random().nextInt(100);
 
         //find the pit id using the game id
@@ -56,7 +57,7 @@ public class PitServiceTest {
     }
 
     @Test
-    public void move_saves_the_new_Pits() {
+    public void move_saves_the_new_Pits() throws InvalidMoveException {
         int gameId = 10;
         List<Pit> pits = Collections.singletonList(new Pit(1, gameId, 6));
         List<Pit> newPits = Collections.singletonList(new Pit(1, gameId, 0));
