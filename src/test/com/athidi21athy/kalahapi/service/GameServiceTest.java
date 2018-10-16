@@ -60,7 +60,7 @@ public class GameServiceTest {
                     int stones = idx % 7 == 0 ? 0 : 6;
                     verify(pitRepository).save(argThat(p ->
                             p.getId() == idx &&
-                                    p.getGameId().equals(game.getId()) &&
+                                    p.getGameId() == game.getId() &&
                                     p.getStoneCount() == stones)
                     );
                 }

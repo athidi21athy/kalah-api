@@ -7,6 +7,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+    /*
+     * This is the controller class for the game. This class will create the game.
+     */
+
 @RestController
 public class GameController {
 

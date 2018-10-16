@@ -2,6 +2,9 @@ package com.athidi21athy.kalahapi.domain;
 
 import java.util.Map;
 
+/*
+ * This class stores the gameState. Based on the game id it gives you the stone count
+*/
 public class GameState {
     private Map<String, String> state;
     private String uri;

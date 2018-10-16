@@ -5,6 +5,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/*
+ * This is the game class. All the game attributes are set here.
+ */
 @Entity
 public class Game {
     @Id

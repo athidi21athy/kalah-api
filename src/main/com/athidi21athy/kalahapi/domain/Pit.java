@@ -9,33 +9,33 @@ import javax.persistence.IdClass;
 public class Pit {
 
     @Id
-    private Integer id;
+    private int id;
     @Id
-    private Integer gameId;
-    private Integer stones;
+    private int gameId;
+    private int stones;
 
     protected Pit() {
     }
 
-    public Pit(Integer id, Integer gameId, Integer stoneCount) {
+    public Pit(int id, int gameId, int stoneCount) {
         this.id = id;
         this.gameId = gameId;
         this.stones = stoneCount;
     }
 
-    public Integer getId() {
+    public int getId() {
         return this.id;
     }
 
-    public Integer getGameId() {
+    public int getGameId() {
         return this.gameId;
     }
 
-    public Integer getStoneCount() {
+    public int getStoneCount() {
         return this.stones;
     }
 
-    public void setStoneCount(Integer count) {
+    public void setStoneCount(int count) {
         this.stones = count;
     }
 }
