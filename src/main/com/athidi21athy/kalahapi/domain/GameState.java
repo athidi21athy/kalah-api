@@ -3,7 +3,7 @@ package com.athidi21athy.kalahapi.domain;
 import java.util.Map;
 
 /*
- * This class stores the gameState. Based on the game id it gives you the stone count
+ * This class stores the gameState. Based on the game id it gives you the game state
 */
 public class GameState {
     private Map<String, String> state;
