@@ -1,4 +1,8 @@
 package com.athidi21athy.kalahapi.exceptions;
 
-public class InvalidMoveException extends Throwable {
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+@ResponseStatus(value= HttpStatus.NOT_ACCEPTABLE, reason="Invalid move")
+public class InvalidMoveException extends RuntimeException {
 }

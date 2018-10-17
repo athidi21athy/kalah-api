@@ -4,6 +4,7 @@ import com.athidi21athy.kalahapi.GameEngine;
 import com.athidi21athy.kalahapi.domain.Pit;
 import com.athidi21athy.kalahapi.exceptions.InvalidMoveException;
 import com.athidi21athy.kalahapi.repository.PitRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.stream.Collectors;
 @Service
 public class PitService {
 
+    @Autowired
     private final GameEngine gameEngine;
     private PitRepository pitRepository;
 

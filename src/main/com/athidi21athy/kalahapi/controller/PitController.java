@@ -20,12 +20,7 @@ public class PitController {
 
     @PutMapping("/games/{gameId}/pits/{pitId}")
     private GameState updatePit(@PathVariable("gameId") Integer gameId, @PathVariable("pitId") Integer pitId) {
-        Map<String, String> state = null;
-        try {
-            state = pitService.move(gameId, pitId);
-        } catch (InvalidMoveException e) {
-            e.printStackTrace();
-        }
+        Map<String, String> state = pitService.move(gameId, pitId);
         return new GameState(gameId, state);
     }
 

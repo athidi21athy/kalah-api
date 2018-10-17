@@ -24,7 +24,7 @@ public class GameService {
         IntStream.rangeClosed(1,14).forEach(
                 n-> {
                     int stones = n % 7 == 0 ? 0 : 6;
-                    Boolean isAvailable = n % 7 != 0;
+                    boolean isAvailable = n % 7 != 0;
                     pitRepository.save(new Pit(n, kalahGame.getId(), stones, isAvailable));
                 }
         );

@@ -83,43 +83,61 @@ public class GameEngineTest {
         }
     }
 
+    @Test
+    public void tryMove_returnsExpected_pitAvailability_after_initialMove() {
+        int gameId = 14;
+        List<Pit> pits = getInitialGamePits(gameId);
+        List<Pit> actual = new GameEngine().tryMove(pits, 1);
+        Assertions.assertThat(actual).extracting("isAvailable").containsExactly(
+                false, true, true, true, true, true, false, false, false, false, false, false, false, false);
+    }
+
+    @Test
+    public void tryMove_returnsExpected_pitAvailability_after_secondMove() {
+        int gameId = 14;
+        List<Pit> pits = getInitialMovePits(gameId);
+        List<Pit> actual = new GameEngine().tryMove(pits, 4);
+        Assertions.assertThat(actual).extracting("isAvailable").containsExactly(
+                false, false, false, false, false, false, false, true, true, true, true, true, true, false);
+    }
+
     // if pitId is 1
     private List<Pit> getInitialMovePits(Integer gameId) {
         List<Pit> pits = new ArrayList<>();
-        pits.add(new Pit(1, gameId, 0));
-        pits.add(new Pit(2, gameId, 7));
-        pits.add(new Pit(3, gameId, 7));
-        pits.add(new Pit(4, gameId, 7));
-        pits.add(new Pit(5, gameId, 7));
-        pits.add(new Pit(6, gameId, 7));
-        pits.add(new Pit(7, gameId, 1));
-        pits.add(new Pit(8, gameId, 6));
-        pits.add(new Pit(9, gameId, 6));
-        pits.add(new Pit(10, gameId, 6));
-        pits.add(new Pit(11, gameId, 6));
-        pits.add(new Pit(12, gameId, 6));
-        pits.add(new Pit(13, gameId, 6));
-        pits.add(new Pit(14, gameId, 0));
+        pits.add(new Pit(1, gameId, 0, false));
+        pits.add(new Pit(2, gameId, 7, true));
+        pits.add(new Pit(3, gameId, 7, true));
+        pits.add(new Pit(4, gameId, 7, true));
+        pits.add(new Pit(5, gameId, 7, true));
+        pits.add(new Pit(6, gameId, 7, true));
+        pits.add(new Pit(7, gameId, 1, false));
+        pits.add(new Pit(8, gameId, 6, false));
+        pits.add(new Pit(9, gameId, 6, false));
+        pits.add(new Pit(10, gameId, 6, false));
+        pits.add(new Pit(11, gameId, 6, false));
+        pits.add(new Pit(12, gameId, 6, false));
+        pits.add(new Pit(13, gameId, 6, false));
+        pits.add(new Pit(14, gameId, 0, false));
         return pits;
     }
 
     // if pitId is 4
     private List<Pit> getSecondMovePits(Integer gameId) {
         List<Pit> pits = new ArrayList<>();
-        pits.add(new Pit(1, gameId, 0));
-        pits.add(new Pit(2, gameId, 7));
-        pits.add(new Pit(3, gameId, 7));
-        pits.add(new Pit(4, gameId, 0));
-        pits.add(new Pit(5, gameId, 8));
-        pits.add(new Pit(6, gameId, 8));
-        pits.add(new Pit(7, gameId, 2));
-        pits.add(new Pit(8, gameId, 7));
-        pits.add(new Pit(9, gameId, 7));
-        pits.add(new Pit(10, gameId, 7));
-        pits.add(new Pit(11, gameId, 7));
-        pits.add(new Pit(12, gameId, 6));
-        pits.add(new Pit(13, gameId, 6));
-        pits.add(new Pit(14, gameId, 0));
+        pits.add(new Pit(1, gameId, 0, false));
+        pits.add(new Pit(2, gameId, 7, false));
+        pits.add(new Pit(3, gameId, 7, false));
+        pits.add(new Pit(4, gameId, 0, false));
+        pits.add(new Pit(5, gameId, 8, false));
+        pits.add(new Pit(6, gameId, 8, false));
+        pits.add(new Pit(7, gameId, 2, false));
+        pits.add(new Pit(8, gameId, 7, true));
+        pits.add(new Pit(9, gameId, 7, true));
+        pits.add(new Pit(10, gameId, 7, true));
+        pits.add(new Pit(11, gameId, 7, true));
+        pits.add(new Pit(12, gameId, 6, true));
+        pits.add(new Pit(13, gameId, 6, true));
+        pits.add(new Pit(14, gameId, 0, false));
         return pits;
     }
 
