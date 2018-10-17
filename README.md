@@ -16,7 +16,7 @@ Java Version 1.8+ Apache Maven </br>
 <B>Installation </B> </br>
 
 If you have been provided with a compiled .jar file, named something like manKalah-x.x Release.jar you can skip the next step, otherwise:
-Unzip the source code to your chosen directory or retrieve from github via git clone <B>GIT CLONE URL</B> the command prompt type mvn clean install. This will build the project and place a compiled .jar file into the /target directiory. I recommend this step as it will also generate some useful test documentation. Navigate to that directory and type java -jar "generated jarfile name". Alternatively you can navigate to the base directory (which contains the pom.xml file) and type: mvn spring-boot:run.
+Unzip the source code to your chosen directory or retrieve from github via git clone https://github.com/athidi21athy/kalah-api.git the command prompt type mvn clean install. This will build the project and place a compiled .jar file into the /target directiory. I recommend this step as it will also generate some useful test documentation. Navigate to that directory and type java -jar "generated jarfile name". Alternatively you can navigate to the base directory (which contains the pom.xml file) and type: mvn spring-boot:run.
 When the application is Started
 
 The endpoints available are as follows:
@@ -25,7 +25,7 @@ The endpoints available are as follows:
 http://localhost:8080/games </br>
 
 <B>Play game API</B> </br>
-http://localhost:8080/games/1/pits/4 </br>
+http://localhost:8080/games/1/pits/1 </br>
 
 Once the game is created you can go ahead and start playing the game using Play game API url.
 Once the game is created, in order to make a move uoi need make a post request to games/{gameId}/pits/{pitId} passing the unique identifier of the game you want to make a move on,and the pit id the player is moving from. </br>
@@ -36,4 +36,4 @@ Once the game is created, in order to make a move uoi need make a post request t
 [SpringBoot](https://spring.io/projects/spring-boot)
 
 <B>Author</B></br>
-Arathy Krishna
+[Arathy Krishna](krish.athy@gmail.com)
