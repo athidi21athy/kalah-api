@@ -17,7 +17,8 @@ public class PitController {
     public PitController(PitService pitService) {
         this.pitService = pitService;
     }
-
+    
+    //update the pit when a move is made
     @PutMapping("/games/{gameId}/pits/{pitId}")
     private GameState updatePit(@PathVariable("gameId") Integer gameId, @PathVariable("pitId") Integer pitId) {
         Map<String, String> state = pitService.move(gameId, pitId);
