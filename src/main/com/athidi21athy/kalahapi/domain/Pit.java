@@ -4,6 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 
+/*
+ * This is the main pit Class. This class will set all the pit attributes.
+ */
 @Entity
 @IdClass(PitIdentifier.class)
 public class Pit {
@@ -45,6 +48,9 @@ public class Pit {
         this.stones = count;
     }
 
+    /*
+     * gives you a boolean to say if the pit is available for the next move
+     */
     public boolean getIsAvailable() {
         return this.isAvailable;
     }

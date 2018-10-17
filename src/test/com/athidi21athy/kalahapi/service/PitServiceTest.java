@@ -27,7 +27,7 @@ public class PitServiceTest {
     private PitRepository pitRepository;
 
     @Mock
-    private PitService pitService;
+    private com.athidi21athy.kalahapi.service.PitService pitService;
     @Mock
     private GameEngine gameEngine;
 

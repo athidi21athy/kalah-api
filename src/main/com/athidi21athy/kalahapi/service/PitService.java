@@ -23,11 +23,13 @@ public class PitService {
         this.gameEngine = gameEngine;
     }
 
-    //This function will move the stones in the correct position for you after each
+    //This function will move the stones in the correct position for you after each game
     public Map<String, String> move(Integer gameId, Integer pitId) throws InvalidMoveException {
-        //On a move should return expected State
+        //Find the pit using game id
         List<Pit> currentPitList = this.pitRepository.findByGameId(gameId);
+        //make the moves
         List<Pit> newPitList = this.gameEngine.tryMove(currentPitList, pitId);
+        //saves the pit's latest statues
         pitRepository.saveAll(newPitList);
         return newPitList.stream().collect(
                 Collectors.toMap(

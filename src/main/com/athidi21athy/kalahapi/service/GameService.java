@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.stream.IntStream;
 
+/*
+* Create game class
+*/
 @Service
 public class GameService {
 
@@ -19,6 +22,9 @@ public class GameService {
         this.pitRepository = pitRepository;
     }
 
+    /*
+     * Creates the 1stt game and initialize pits with respective stones.
+     */
     public Game createGame() {
         Game kalahGame = this.gameRepository.save(new Game());
         IntStream.rangeClosed(1,14).forEach(
